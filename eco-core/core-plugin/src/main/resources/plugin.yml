@@ -1,74 +1,9 @@
-name: EcoBosses
-version: ${projectVersion}
-main: com.willfp.ecobosses.EcoBossesPlugin
+name: ${pluginName}
+version: ${version}
+main: com.willfp.libreforgetemplate.LibreforgeTemplatePlugin
 api-version: 1.17
-authors: [Auxilor]
+authors: [ Auxilor ]
 website: willfp.com
 load: STARTUP
 depend:
   - eco
-softdepend:
-  - LevelledMobs
-  - AureliumSkills
-  - Jobs
-  - mcMMO
-  - Vault
-  - TMMobcoins
-  - EcoEnchants
-  - Talismans
-  - EcoArmor
-  - EcoItems
-  - EcoSkills
-  - Boosters
-  - ModelEngine
-  - EcoJobs
-
-commands:
-  ecobosses:
-    description: Base command
-    permission: ecobosses.command.ecobosses
-
-permissions:
-  ecobosses.*:
-    description: All ecobosses permissions
-    default: op
-    children:
-      ecobosses.command.*: true
-  ecobosses.command.*:
-    description: All ecobosses commands
-    default: op
-    children:
-      ecobosses.command.ecobosses: true
-      ecobosses.command.reload: true
-      ecobosses.command.spawn: true
-      ecobosses.command.give: true
-      ecobosses.command.import: true
-      ecobosses.command.export: true
-
-  ecobosses.command.ecobosses:
-    description: Allows the use of /ecobosses
-    default: true
-
-  ecobosses.command.give:
-    description: Allows the use of /ecobosses give
-    default: op
-
-  ecobosses.command.spawn:
-    description: Allows the use of /ecobosses spawn
-    default: op
-
-  ecobosses.command.killall:
-    description: Allows the use of /ecobosses killall
-    default: op
-
-  ecobosses.command.reload:
-    description: Allows the use of /ecobosses reload
-    default: op
-
-  ecobosses.command.import:
-    description: Allows the use of /ecobosses import
-    default: op
-
-  ecobosses.command.export:
-    description: Allows the use of /ecobosses export
-    default: op
