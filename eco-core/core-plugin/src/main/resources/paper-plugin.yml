@@ -1,0 +1,18 @@
+name: ${pluginName}
+version: ${version}
+main: com.willfp.libreforgetemplate.LibreforgeTemplatePlugin
+api-version: 1.19
+has-open-classloader: true
+
+dependencies:
+  - name: eco
+    required: true
+    bootstrap: false
+
+  - name: libreforge
+    required: false
+    bootstrap: false
+
+load-after:
+  - name: eco
+    bootstrap: false

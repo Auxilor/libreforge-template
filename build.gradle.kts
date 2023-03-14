@@ -30,6 +30,7 @@ allprojects {
         mavenLocal()
         mavenCentral()
 
+        maven("https://repo.papermc.io/repository/maven-public/")
         maven("https://jitpack.io")
         maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
         maven("https://repo.codemc.org/repository/nms/")
@@ -40,11 +41,12 @@ allprojects {
     }
 
     dependencies {
-        compileOnly("com.willfp:eco:6.44.0")
+        compileOnly("com.willfp:eco:6.52.2")
         compileOnly("org.jetbrains:annotations:23.0.0")
         compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
-        implementation("com.willfp:libreforge:3.129.5")
+        compileOnly("com.willfp:libreforge:$libreforgeVersion")
+        implementation("com.willfp:libreforge-loader:$libreforgeVersion")
     }
 
     java {
@@ -53,6 +55,10 @@ allprojects {
     }
 
     tasks {
+        shadowJar {
+            relocate("com.willfp.libreforge.loader", "com.willfp.libreforgetemplate.libreforge.loader")
+        }
+
         compileKotlin {
             kotlinOptions {
                 jvmTarget = "17"
@@ -67,11 +73,11 @@ allprojects {
         }
 
         processResources {
-            filesMatching("**plugin.yml") {
+            filesMatching(listOf("**plugin.yml", "**eco.yml")) {
                 expand(
                     "version" to project.version,
                     "libreforgeVersion" to libreforgeVersion,
-                    "pluginName" to project.name
+                    "pluginName" to rootProject.name
                 )
             }
         }
@@ -91,7 +97,7 @@ tasks {
 
         from(
             configurations.compileClasspath.get()
-                .filter { it.name.contains("libreforge") }
+                .filter { it.name.contains("libreforge-4") }
                     + shadowJar.get().outputs.files.map { zipTree(it) }
         )
     }
