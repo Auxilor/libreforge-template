@@ -89,7 +89,7 @@ allprojects {
 }
 
 tasks {
-    val libreforgeJar = task("libreforgeJar", Jar::class) {
+    val libreforgeJar = register("libreforgeJar", Jar::class.java) {
         destinationDirectory.set(file("$rootDir/bin"))
         archiveFileName.set("${project.name} v${project.version}.jar")
 

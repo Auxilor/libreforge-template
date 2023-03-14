@@ -2,7 +2,6 @@ name: ${pluginName}
 version: ${version}
 main: com.willfp.libreforgetemplate.LibreforgeTemplatePlugin
 api-version: 1.19
-has-open-classloader: true
 
 dependencies:
   - name: eco
