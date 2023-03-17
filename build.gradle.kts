@@ -45,7 +45,7 @@ allprojects {
         compileOnly("org.jetbrains:annotations:23.0.0")
         compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
-        compileOnly("com.willfp:libreforge:$libreforgeVersion")
+        compileOnly("com.willfp:libreforge:$libreforgeVersion:shadow")
         implementation("com.willfp:libreforge-loader:$libreforgeVersion")
     }
 
