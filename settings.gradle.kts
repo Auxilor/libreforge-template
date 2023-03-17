@@ -1,7 +1,9 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        mavenLocal()
         maven("https://repo.jpenilla.xyz/snapshots/")
+        maven("https://jitpack.io")
     }
 }
 

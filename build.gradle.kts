@@ -4,6 +4,7 @@ plugins {
     `maven-publish`
     kotlin("jvm") version "1.7.10"
     id("com.github.johnrengelman.shadow") version "8.0.0"
+    id("com.willfp.libreforge.gradle") version "1.0.0"
 }
 
 group = "com.willfp"
@@ -44,9 +45,6 @@ allprojects {
         compileOnly("com.willfp:eco:6.52.2")
         compileOnly("org.jetbrains:annotations:23.0.0")
         compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
-
-        compileOnly("com.willfp:libreforge:$libreforgeVersion:shadow")
-        implementation("com.willfp:libreforge-loader:$libreforgeVersion")
     }
 
     java {
@@ -84,31 +82,6 @@ allprojects {
 
         build {
             dependsOn(shadowJar)
-        }
-    }
-}
-
-tasks {
-    val libreforgeJar = register("libreforgeJar", Jar::class.java) {
-        destinationDirectory.set(file("$rootDir/bin"))
-        archiveFileName.set("${project.name} v${project.version}.jar")
-
-        dependsOn(shadowJar)
-
-        from(
-            configurations.compileClasspath.get()
-                .filter { it.name.contains("libreforge-4") }
-                    + shadowJar.get().outputs.files.map { zipTree(it) }
-        )
-    }
-
-    build {
-        dependsOn(libreforgeJar)
-    }
-
-    clean {
-        doLast("Delete bin folder") {
-            file("$rootDir/bin").deleteRecursively()
         }
     }
 }
