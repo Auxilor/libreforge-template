@@ -33,12 +33,6 @@ allprojects {
 
         maven("https://repo.papermc.io/repository/maven-public/")
         maven("https://jitpack.io")
-        maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-        maven("https://repo.codemc.org/repository/nms/")
-        maven("https://repo.codemc.org/repository/maven-public")
-        maven("https://repo.dmulloy2.net/nexus/repository/public/")
-        maven("https://papermc.io/repo/repository/maven-public/")
-        maven("https://mvn.lumine.io/repository/maven-public/")
     }
 
     dependencies {
