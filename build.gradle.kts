@@ -4,7 +4,7 @@ plugins {
     `maven-publish`
     kotlin("jvm") version "1.7.10"
     id("com.github.johnrengelman.shadow") version "8.0.0"
-    id("com.willfp.libreforge.gradle") version "1.0.0"
+    id("com.willfp.libreforge-gradle-plugin") version "1.0.0"
 }
 
 group = "com.willfp"
@@ -32,11 +32,12 @@ allprojects {
         mavenCentral()
 
         maven("https://repo.papermc.io/repository/maven-public/")
+        maven("https://repo.auxilor.io/repository/maven-public/")
         maven("https://jitpack.io")
     }
 
     dependencies {
-        compileOnly("com.willfp:eco:6.52.2")
+        compileOnly("com.willfp:eco:6.53.0")
         compileOnly("org.jetbrains:annotations:23.0.0")
         compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
     }
